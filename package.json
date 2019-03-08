@@ -2,13 +2,31 @@
   "name": "rdm-notifications",
   "version": "0.0.1",
   "description": "Notifications for redux-dynamic-modules",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "git@github.com:Verikon/rdm-notifications.git",
   "author": "Bren Norris <bnorris@enterrasolutions.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
   "dependencies": {
+    "@types/react": "^16.8.7",
+    "@types/react-dom": "^16.8.2",
+    "@types/redux": "^3.6.0",
+    "immer": "^2.1.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "redux-dynamic-modules": "^3.4.4"
+  },
+  "devDependencies": {
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "ts-node": "^8.0.3",
+    "typescript": "^3.3.3333"
+  },
+  "peerDependencies": {
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1"
   }
 }
