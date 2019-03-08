@@ -1,6 +1,6 @@
 {
   "name": "rdm-notifications",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Notifications for redux-dynamic-modules",
   "main": "dist/index.js",
   "repository": "git@github.com:Verikon/rdm-notifications.git",
