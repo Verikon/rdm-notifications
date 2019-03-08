@@ -5,7 +5,22 @@ import {DynamicModuleLoader} from "redux-dynamic-modules";
 
 import {getNotificationsModule} from './store';
 
-export class Notifications extends Component {
+import {Notification} from './Notification';
+
+import {connect} from 'react-redux';
+
+interface Props {
+    dispatch?:any
+    notifications?: Array<any>
+}
+
+@(connect(state=>{
+
+    return {
+        notifications: state.notifications ? state.notifications.current : []
+    };
+}) as any)
+export class Notifications extends Component<Props>{
 
     constructor( props ) {
 
@@ -17,9 +32,19 @@ export class Notifications extends Component {
         return(
             <DynamicModuleLoader modules={[getNotificationsModule()]}>
                 <div className="rdm-notifications">
-                    <b>Imported</b>
+                    {this.notifications()}
                 </div>
             </DynamicModuleLoader>
         );
+    }
+
+    notifications() {
+
+        const {notifications} = this.props;
+        if(!notifications.length) return null;
+
+        return notifications.map((notification,i)=> <Notification {...notification} />);
+
+
     }
 }

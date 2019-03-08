@@ -1,7 +1,7 @@
 import {produce} from 'immer';
 
 const initialState = {
-    notifications: []
+    current: []
 }
 
 export function NotificationsReducer( state, action ) {
@@ -15,10 +15,16 @@ export function NotificationsReducer( state, action ) {
             case 'NOTIFICATIONS_NOTIFY':
 
                 const {title, message, level} = action;
-                const _id = new Date().getTime()+Math.random()*10000;
+                const _id = action._id = parseInt(new Date().getTime()+(Math.random()*10000).toString(),10);
+                draft.current.push({title,message,level,_id});
+                break;
 
-                state.notifications.push({title,message,level,_id});
+            case 'NOTIFICATIONS_EXPIRING':
+                break;
 
+            case 'NOTIFICATIONS_EXPIRE':
+                draft.current = draft.current.filter(notification=> notification._id !== action._id);
+                break;
         }
 
     });

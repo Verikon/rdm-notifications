@@ -7,7 +7,7 @@ export function getNotificationsModule() {
     return {
         id: 'notifications',
         reducerMap: {
-            NotificationsReducer
+            notifications: NotificationsReducer
         },
         sagas:[NotificationsSaga]
     }
