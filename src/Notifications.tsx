@@ -3,13 +3,9 @@ import '../style/index.scss';
 import React, {Component} from 'react';
 import {DynamicModuleLoader} from "redux-dynamic-modules";
 
-import {getNotificationsModule} from './redux';
+import {getNotificationsModule} from './store';
 
-interface Props {
-
-}
-
-export class Notifications extends Component<Props> {
+export class Notifications extends Component {
 
     constructor( props ) {
 

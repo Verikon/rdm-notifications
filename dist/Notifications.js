@@ -10,13 +10,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("../style/index.scss");
 const react_1 = __importStar(require("react"));
 const redux_dynamic_modules_1 = require("redux-dynamic-modules");
-const redux_1 = require("./redux");
+const store_1 = require("./store");
 class Notifications extends react_1.Component {
     constructor(props) {
         super(props);
     }
     render() {
-        return (react_1.default.createElement(redux_dynamic_modules_1.DynamicModuleLoader, { modules: [redux_1.getNotificationsModule()] },
+        return (react_1.default.createElement(redux_dynamic_modules_1.DynamicModuleLoader, { modules: [store_1.getNotificationsModule()] },
             react_1.default.createElement("div", { className: "rdm-notifications" },
                 react_1.default.createElement("b", null, "Imported"))));
     }
