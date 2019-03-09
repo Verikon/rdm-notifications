@@ -2,12 +2,14 @@
 import {NotificationsReducer} from './reducers';
 import {NotificationsSaga} from './sagas';
 
-export function getNotificationsModule() {
+export function getNotificationsModule( key?:string ) {
+
+    key = key || 'notifications';
 
     return {
-        id: 'notifications',
+        id: 'rdm-notifications',
         reducerMap: {
-            notifications: NotificationsReducer
+            [key]: NotificationsReducer
         },
         sagas:[NotificationsSaga]
     }

@@ -13,13 +13,16 @@ interface Props {
     dispatch?:any
     notifications?: Array<any>
     nextPos?:number,
+    reduxKey?: string
 }
 
-@(connect(state=>{
+@(connect((state,props)=>{
+
+    const reduxKey = props.reduxKey || 'notifications';
 
     return {
-        notifications: state.notifications ? state.notifications.current : [],
-        nextPos: state.notifications ? state.notifications.nextPos : 0
+        notifications: state[reduxKey] ? state[reduxKey].current : [],
+        nextPos: state[reduxKey] ? state[reduxKey].nextPos : 0
     };
 }) as any)
 export class Notifications extends Component<Props>{
@@ -31,8 +34,10 @@ export class Notifications extends Component<Props>{
 
     render() {
 
+        const reduxKey = this.props.reduxKey || 'notifications';
+
         return(
-            <DynamicModuleLoader modules={[getNotificationsModule()]}>
+            <DynamicModuleLoader modules={[getNotificationsModule(reduxKey)]}>
                 <div className="rdm-notifications">
                     {this.notifications()}
                 </div>

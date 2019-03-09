@@ -2,11 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const reducers_1 = require("./reducers");
 const sagas_1 = require("./sagas");
-function getNotificationsModule() {
+function getNotificationsModule(key) {
+    key = key || 'notifications';
     return {
-        id: 'notifications',
+        id: 'rdm-notifications',
         reducerMap: {
-            notifications: reducers_1.NotificationsReducer
+            [key]: reducers_1.NotificationsReducer
         },
         sagas: [sagas_1.NotificationsSaga]
     };

@@ -25,7 +25,8 @@ let Notifications = class Notifications extends react_1.Component {
         super(props);
     }
     render() {
-        return (react_1.default.createElement(redux_dynamic_modules_1.DynamicModuleLoader, { modules: [store_1.getNotificationsModule()] },
+        const reduxKey = this.props.reduxKey || 'notifications';
+        return (react_1.default.createElement(redux_dynamic_modules_1.DynamicModuleLoader, { modules: [store_1.getNotificationsModule(reduxKey)] },
             react_1.default.createElement("div", { className: "rdm-notifications" }, this.notifications())));
     }
     notifications() {
@@ -36,10 +37,11 @@ let Notifications = class Notifications extends react_1.Component {
     }
 };
 Notifications = __decorate([
-    react_redux_1.connect(state => {
+    react_redux_1.connect((state, props) => {
+        const reduxKey = props.reduxKey || 'notifications';
         return {
-            notifications: state.notifications ? state.notifications.current : [],
-            nextPos: state.notifications ? state.notifications.nextPos : 0
+            notifications: state[reduxKey] ? state[reduxKey].current : [],
+            nextPos: state[reduxKey] ? state[reduxKey].nextPos : 0
         };
     })
 ], Notifications);

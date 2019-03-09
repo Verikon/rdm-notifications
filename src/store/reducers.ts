@@ -14,7 +14,6 @@ export function NotificationsReducer( state, action ) {
         switch(action.type) {
 
             case 'NOTIFICATIONS_NOTIFY':
-
                 action.messageType = action.messageType || 'info';
                 action.duration = action.duration === undefined ? 5000 : action.duration;
                 action._id = parseInt(new Date().getTime()+(Math.random()*10000).toString(),10);
