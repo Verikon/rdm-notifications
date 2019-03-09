@@ -21,10 +21,8 @@ function NotificationsReducer(state, action) {
             case 'NOTIFICATIONS_EXPIRE':
                 let found = false;
                 let subjectheight;
-                console.log('GOO');
                 draft.current = draft.current.reduce((c, notification) => {
                     const subject = notification._id === action._id;
-                    console.log('SUBJECTHEIGHT', subjectheight);
                     if (!subject && !found)
                         return c.concat([notification]);
                     if (subject) {
