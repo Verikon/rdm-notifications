@@ -1,5 +1,5 @@
 import '../style/index.scss';
-
+import '../style/themed.scss';
 import React, {Component} from 'react';
 import {DynamicModuleLoader} from "redux-dynamic-modules";
 
@@ -12,12 +12,14 @@ import {connect} from 'react-redux';
 interface Props {
     dispatch?:any
     notifications?: Array<any>
+    nextPos?:number,
 }
 
 @(connect(state=>{
 
     return {
-        notifications: state.notifications ? state.notifications.current : []
+        notifications: state.notifications ? state.notifications.current : [],
+        nextPos: state.notifications ? state.notifications.nextPos : 0
     };
 }) as any)
 export class Notifications extends Component<Props>{
@@ -40,10 +42,16 @@ export class Notifications extends Component<Props>{
 
     notifications() {
 
-        const {notifications} = this.props;
+        const {notifications, dispatch, nextPos} = this.props;
         if(!notifications.length) return null;
 
-        return notifications.map((notification,i)=> <Notification {...notification} />);
+        return notifications.map(notification => (
+            <Notification
+                {...notification}
+                dispatch={dispatch}
+                offset={nextPos}
+                key={'rdm-notification-'+notification._id} />
+        ));
 
 
     }

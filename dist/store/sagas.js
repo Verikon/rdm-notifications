@@ -6,7 +6,9 @@ function* NotificationsSaga(action) {
 }
 exports.NotificationsSaga = NotificationsSaga;
 function* onNotify(action) {
-    const { _id } = action;
-    yield effects_1.delay(5000);
-    yield effects_1.put({ type: 'NOTIFICATIONS_EXPIRE', _id });
+    const { _id, duration, clickExpire } = action;
+    if (!clickExpire) {
+        yield effects_1.delay(duration);
+        yield effects_1.put({ type: 'NOTIFICATIONS_EXPIRE', _id });
+    }
 }

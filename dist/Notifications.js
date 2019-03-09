@@ -14,6 +14,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("../style/index.scss");
+require("../style/themed.scss");
 const react_1 = __importStar(require("react"));
 const redux_dynamic_modules_1 = require("redux-dynamic-modules");
 const store_1 = require("./store");
@@ -28,16 +29,17 @@ let Notifications = class Notifications extends react_1.Component {
             react_1.default.createElement("div", { className: "rdm-notifications" }, this.notifications())));
     }
     notifications() {
-        const { notifications } = this.props;
+        const { notifications, dispatch, nextPos } = this.props;
         if (!notifications.length)
             return null;
-        return notifications.map((notification, i) => react_1.default.createElement(Notification_1.Notification, Object.assign({}, notification)));
+        return notifications.map(notification => (react_1.default.createElement(Notification_1.Notification, Object.assign({}, notification, { dispatch: dispatch, offset: nextPos, key: 'rdm-notification-' + notification._id }))));
     }
 };
 Notifications = __decorate([
     react_redux_1.connect(state => {
         return {
-            notifications: state.notifications ? state.notifications.current : []
+            notifications: state.notifications ? state.notifications.current : [],
+            nextPos: state.notifications ? state.notifications.nextPos : 0
         };
     })
 ], Notifications);

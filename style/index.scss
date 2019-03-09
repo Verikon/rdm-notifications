@@ -1,6 +1,15 @@
 
-$infobg: red;
-$infoclr: white;
+$infobg: #2b778c;
+$infoclr: #fff;
+
+$successbg: #367b4d;
+$successfg: #fff;
+
+$errorbg: #900;;
+$errorfg: #fff;
+
+$warningbg: #f80;
+$warningfg: rgb(5, 5, 5);
 
 .rdm-notifications {
 
@@ -12,15 +21,67 @@ $infoclr: white;
     z-index:9;
     user-select: none;
     pointer-events: none;
+    height: 100%;
+    overflow: hidden;
+
     .notification {
 
+        position: absolute;
+        display: flex;
+        flex-direction:column;
+        align-self: flex-end;
         background-color: blue;
-        margin-left: auto;
         padding: 1em;
+        margin: .3em;
+        right:1em;
+        max-width: 300px;
+
+        &.expire-click {
+            pointer-events: all;
+            cursor: pointer;
+            .expire{ display: block; }
+        }
+
+        .expire{
+
+            display: none;
+            position: absolute;
+            top: .2em;
+            right: .2em;
+            width: 20px; height: 20px;
+            
+            path {
+                fill: white;
+                stroke: white;    
+            }
+        }
+
+        span {
+
+            display: block;
+            color:white;
+
+            &.title {
+                font-weight:600;
+                margin-bottom:1em;
+            }
+        }
 
         &.info{
             background-color: $infobg;
             color: $infoclr;
+        }
+
+        &.success{
+            background-color: $successbg;
+        }
+
+        &.error{
+            background-color: $errorbg;
+        }
+
+        &.warning{
+            background-color: $warningbg;
         }
     }
 

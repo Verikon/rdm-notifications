@@ -7,7 +7,11 @@ export function* NotificationsSaga( action ) {
 
 function* onNotify( action ) {
 
-    const {_id} = action;
-    yield delay(5000);
-    yield put({type: 'NOTIFICATIONS_EXPIRE', _id});
+    const {_id, duration, clickExpire} = action;
+
+    if( !clickExpire ) {
+
+        yield delay(duration);
+        yield put({type: 'NOTIFICATIONS_EXPIRE', _id});
+    }
 }
