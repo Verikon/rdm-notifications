@@ -18,12 +18,18 @@ Props:
 ```
 import React from 'react';
 import {connect} from 'react-redux';
+import {Notifications} from 'rdm-notifications';
 
 @connect()
 class Example extends React.Component {
 
   render() {
-    return <div onClick={this.onNotify}><span>Click Me to Notify</span></div>
+    return (
+      <div>
+        <Notifications />
+        <div onClick={this.onNotify}><span>Click Me to Notify</span></div>
+      </div>
+    )
   }
   
   onNotify = evt => this.props.dispatch({
