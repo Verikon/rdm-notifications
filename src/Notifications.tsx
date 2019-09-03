@@ -10,10 +10,11 @@ import {Notification} from './Notification';
 import {connect} from 'react-redux';
 
 interface Props {
-    dispatch?:any
-    notifications?: Array<any>
-    nextPos?:number,
-    reduxKey?: string
+    dispatch?:any;
+    notifications?: Array<any>;
+    nextPos?:number;
+    reduxKey?: string;
+    clickExpire: boolean;
 }
 
 @(connect((state,props)=>{
@@ -47,7 +48,7 @@ export class Notifications extends Component<Props>{
 
     notifications() {
 
-        const {notifications, dispatch, nextPos} = this.props;
+        const {notifications, dispatch, nextPos, clickExpire} = this.props;
         if(!notifications.length) return null;
 
         return notifications.map(notification => (
@@ -55,6 +56,7 @@ export class Notifications extends Component<Props>{
                 {...notification}
                 dispatch={dispatch}
                 offset={nextPos}
+                clickExpire={clickExpire}
                 key={'rdm-notification-'+notification._id} />
         ));
 

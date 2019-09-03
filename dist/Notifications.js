@@ -30,10 +30,10 @@ let Notifications = class Notifications extends react_1.Component {
             react_1.default.createElement("div", { className: "rdm-notifications" }, this.notifications())));
     }
     notifications() {
-        const { notifications, dispatch, nextPos } = this.props;
+        const { notifications, dispatch, nextPos, clickExpire } = this.props;
         if (!notifications.length)
             return null;
-        return notifications.map(notification => (react_1.default.createElement(Notification_1.Notification, Object.assign({}, notification, { dispatch: dispatch, offset: nextPos, key: 'rdm-notification-' + notification._id }))));
+        return notifications.map(notification => (react_1.default.createElement(Notification_1.Notification, Object.assign({}, notification, { dispatch: dispatch, offset: nextPos, clickExpire: clickExpire, key: 'rdm-notification-' + notification._id }))));
     }
 };
 Notifications = __decorate([

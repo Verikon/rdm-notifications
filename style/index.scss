@@ -35,6 +35,8 @@ $warningfg: rgb(5, 5, 5);
         margin: .3em;
         right:1em;
         max-width: 300px;
+        pointer-events: all;
+        user-select: none;
 
         &.expire-click {
             pointer-events: all;
