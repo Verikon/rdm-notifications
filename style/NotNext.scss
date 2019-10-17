@@ -1,0 +1,84 @@
+.rdm-notifications {
+
+    z-index:9;
+    position:absolute;
+    display:flex;
+    align-items:flex-start;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+
+    .flexbox {
+
+        display: flex;
+        flex-direction: column-reverse;
+
+        .notification {
+
+            pointer-events: all;
+            position: relative;
+            background-color: green;
+            color: white;
+            padding: .5em;
+            margin-bottom: .25em;
+            width: 20em;
+            transition: opacity 250ms;
+            .title {
+                display: block;
+                font-weight: 500;
+                font-size:1.2em;
+            }
+
+            .message {
+                display: block;
+                margin: .5em .25em .25em .25em;
+            }
+
+            .expire {
+
+                position: absolute;
+                right: .2em;
+                top: .2em;
+                height: 1.5em;
+                width: 1.5em;
+                cursor: pointer;
+
+                path {
+                    stroke: white;
+                    stroke-width: 2;
+                    stroke-linecap: round;
+                }
+
+            }
+
+            &.info {
+                background-color: #0070b9;
+                .expire {
+                    path {
+                        /*stroke: green*/
+                    }
+                }
+            }
+
+            &.error {
+                background-color: red;
+            }
+
+            &.success {
+                background-color: green;
+            }
+
+            &.visible {
+                opacity: 1;
+            }
+
+            &.hidden {
+                opacity: 0;
+            }
+
+        }
+
+    }
+
+}

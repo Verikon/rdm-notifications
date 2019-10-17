@@ -1,4 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Notifications_1 = require("./Notifications");
-exports.Notifications = Notifications_1.Notifications;
+//export {Notifications} from './Notifications';
+var NotNext_1 = require("./NotNext");
+exports.Notifications = NotNext_1.Notifications;
