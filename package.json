@@ -11,7 +11,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "immer": "^2.1.1"
+    "immer": "^9.0.6"
   },
   "devDependencies": {
     "@types/react": "^16.8.7",
